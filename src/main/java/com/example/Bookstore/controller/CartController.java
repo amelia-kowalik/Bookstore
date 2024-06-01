@@ -6,9 +6,7 @@ import com.example.Bookstore.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(path = "/cart")
@@ -20,8 +18,9 @@ public class CartController {
     @GetMapping("/add/{bookId}/{quantity}")
     public String addToCart (@PathVariable int bookId, @PathVariable int quantity){
         cartService.addToCart(bookId, quantity);
-        return "redirect:/cart";
+        return "redirect:/main";
     }
+
 
     @GetMapping
     public String getCart(Model model){

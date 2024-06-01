@@ -23,7 +23,8 @@ public class BookController {
     }
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public String add(@ModelAttribute Book book){
+    public String add(@ModelAttribute Book book, @RequestParam String imageUrl){
+        book.setImageUrl(imageUrl);
         this.bookService.saveOrUpdate(book);
         return "redirect:/adminmain";
     }

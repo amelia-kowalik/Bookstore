@@ -16,7 +16,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login","/register","/main","/cart/**").permitAll()
+                        .requestMatchers("/login","/register","/main","/cart").permitAll()
                         .requestMatchers("/adminpanel","/book/**","/update/**","/adminmain").hasAuthority("admin")
                         .anyRequest().authenticated())
                 .csrf(csfr -> csfr.disable())

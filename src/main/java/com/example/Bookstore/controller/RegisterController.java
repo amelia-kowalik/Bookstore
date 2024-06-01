@@ -27,7 +27,7 @@ public class RegisterController {
     String result = userService.registerUser(user);
     model.addAttribute("message",result);
     redirectAttributes.addAttribute("message",result);
-    if(result.equals("succes")){
+    if(result.equals("Registered!")){
         return "redirect:/login";
     }
     return "register";

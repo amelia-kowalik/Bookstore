@@ -16,10 +16,10 @@ public class LoginController {
             model.addAttribute("message",message);
         }
         if (error != null) {
-            model.addAttribute("message", "Nieprawidłowa nazwa użytkownika lub hasło!");
+            model.addAttribute("message", "Wrong username or password!");
         }
         if (logout != null) {
-            model.addAttribute("message", "Pomyślnie wylogowano!");
+            model.addAttribute("message", "Logged out!");
         }
         return "login";
     }
