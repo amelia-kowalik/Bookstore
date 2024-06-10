@@ -17,7 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login","/register","/main","/cart").permitAll()
-                        .requestMatchers("/adminpanel","/book/**","/update/**","/adminmain").hasAuthority("admin")
+                        .requestMatchers("/adminpanel","/book/**","/update/**","/adminmain","/alluserorders").hasAuthority("admin")
                         .anyRequest().authenticated())
                 .csrf(csfr -> csfr.disable())
                 .headers(headers->

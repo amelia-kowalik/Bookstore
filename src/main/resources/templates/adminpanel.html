@@ -25,9 +25,19 @@
                     <button type="submit" class="btn btn-gray">Main page</button>
                 </form>
                 <p>
+                <form th:action="@{/book/add}" method="get">
+                    <button type="submit" class="btn btn-gray">Add book</button>
+                </form>
+                <p>
+                <form th:action="@{/order/alluserorders}" method="get">
+                    <button type="submit" class="btn btn-gray">Orders</button>
+                </form>
+                <p></p>
                 <form th:action="@{/logout}" method="post">
                     <button type="submit" class="btn btn-gray">Log out</button>
                 </form>
+
+
             </div>
             <div class="col col-lg-2">
             </div>

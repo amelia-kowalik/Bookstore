@@ -4,6 +4,48 @@
   <title>BOOKSTORE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
+<style>
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(500px, 1fr));
+    gap: 2rem;
+  }
+
+  .btn-gray {
+    background-color: darkslategray;
+    color: white;
+  }
+
+  .frame {
+    position: relative;
+    border: 10px solid black;
+    padding: 0;
+    width: 650px;
+    height: 300px;
+  }
+
+  .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .frame .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/main">
@@ -31,7 +73,26 @@
     </div>
   </div>
 </nav>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="frame">
+        <img src="https://i.pinimg.com/564x/db/84/e8/db84e8bcb3a6ececa8d0c6dd961565d2.jpg" alt="oops">
+        <div class="overlay">
+          <h1 style="font-family: Cambria">The Bookstore</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
 <body>
+<div class="container">
+  <div class="book-grid">
 <div th:each="book : ${books}">
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
@@ -53,6 +114,8 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
   </div>
 </div>
 </body>

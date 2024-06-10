@@ -30,4 +30,6 @@ public class CommonController {
         model.addAttribute("books",this.bookService.getAll());
         return "adminmain";
     }
+
+
 }

@@ -30,6 +30,10 @@
                     <button type="submit" class="btn btn-gray">Cart</button>
                 </form>
                 <p>
+                <form th:action="@{/order/allorders}" method="get">
+                    <button type="submit" class="btn btn-gray">Orders</button>
+                </form>
+                <p>
                 <form th:action="@{/logout}" method="post">
                     <button type="submit" class="btn btn-gray">Log out</button>
                 </form>

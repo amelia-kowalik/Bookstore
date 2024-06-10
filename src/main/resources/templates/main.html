@@ -4,6 +4,49 @@
   <title>BOOKSTORE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
+<style>
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(500px, 1fr));
+    gap: 2rem;
+  }
+
+  .btn-gray {
+    background-color: darkslategray;
+    color: white;
+  }
+
+  .frame {
+    position: relative;
+    border: 10px solid black;
+    padding: 0;
+    width: 650px;
+    height: 300px;
+  }
+
+  .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .frame .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+</style>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/main">
@@ -33,9 +76,24 @@
 </nav>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+    <div class="frame">
+    <img src="https://i.pinimg.com/564x/db/84/e8/db84e8bcb3a6ececa8d0c6dd961565d2.jpg" alt="oops">
+    <div class="overlay">
+    <h1 style="font-family: Cambria">The Bookstore</h1>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
 <body>
 <div class="container">
-  <div class="row justify-content-center">
+    <div class="book-grid">
     <div th:each="book : ${books}">
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
@@ -48,18 +106,11 @@
               <p class="card-text"> <div th:text="${book.author}"></div> </p>
               <p class="card-text"> <div th:text="${'Price: ' + book.price + ' zł'}"></div>
               <div th:text="${'In stock: ' + book.quantity}"></div> </p>
-              <form id="'cartForm' + ${book.id}" th:action="@{'/cart/add/' + ${book.id} + '/1'}" method="get" style="display: flex; align-items: center;">
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" max="${book.quantity}" required style="width: 50px; margin-right: 10px;" onchange="updateAction(this.value, 'cartForm' + ${book.id})">
-                <button type="submit" style="padding: 5px 10px;">Add to Cart</button>
+              <form method="get" th:action="@{/cart/add/{bookId}/1(bookId=${book.id})}">
+                <button type="submit" class="btn btn-gray">Add to cart</button>
               </form>
 
-              <script>
-                function updateAction(quantity, formId) {
-                  var bookId = /*[[${book.id}]]*/ 'bookId';
-                  document.getElementById(formId).action = '/cart/add/' + bookId + '/' + quantity;
-                }
-              </script>
+
             </div>
           </div>
         </div>

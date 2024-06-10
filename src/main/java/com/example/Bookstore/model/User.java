@@ -3,7 +3,9 @@ package com.example.Bookstore.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,14 +14,18 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "Nazwa użytkownika jest wymagana")
+    @NotBlank(message = "Username is required")
     private String username;
-    @NotBlank(message = "Hasło jest wymagane")
+    @NotBlank(message = "Password is required")
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cart_id")
     private Cart cart;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -68,5 +74,9 @@ public class User {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }
