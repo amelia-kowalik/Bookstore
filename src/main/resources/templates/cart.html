@@ -29,6 +29,8 @@
     </div>
   </div>
 </nav>
+
+<body>
 <h1>Cart</h1>
 <div th:if="${cart.items.isEmpty()}">
   <p>Cart is empty.</p>
@@ -59,12 +61,14 @@
         </form>
       </td>
     </tr>
-    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
-      <p th:text="${errorMessage}"></p>
-    </div>
-    <form th:action="@{/order/submit}" method="post">
-      <button type="submit">Submit Order</button>
-    </form>
     </tbody>
   </table>
+  <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+    <p th:text="${errorMessage}"></p>
+  </div>
+    <form class="text-center" th:action="@{/order/submit}" method="post">
+      <button type="submit" class="btn btn-success">Submit Order</button>
+    </form>
 </div>
+</body>
+</html>
